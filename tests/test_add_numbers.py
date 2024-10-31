@@ -1,6 +1,6 @@
 """Test that our modules behaves as expected"""
 
-from mypackage.add_number import add_num
+from mypackage_chendaniely_ff2004.add_number import add_num
 
 
 def test_add_num():

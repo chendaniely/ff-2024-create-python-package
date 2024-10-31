@@ -4,16 +4,16 @@
 
 [build-system]
 build-backend = "hatchling.build"
-requires = ["hatchling"]
+requires = ["hatchling"]          # "hatch-vcs"
 
 ################################################################################
 # Project Configuration
 ################################################################################
 
 [project]
-name = "mypackage"
-
-version = "0.1.0"
+name = "mypackage_chendaniely_ff2004"
+# dynamic = ["versions"]
+version = "0.1.0" # wouldnt' need this
 
 description = "A package that adds numbers together."
 authors = [{ name = "Daniel Chen", email = "chendaniely@gmail.com" }]
@@ -40,8 +40,8 @@ keywords = []
 dependencies = []
 
 [project.urls]
-Documentation = "https://mypackage.readthedocs.io"
-Download = "https://pypi.org/project/mypackage/#files"
+Documentation = "https://mypackage_chendaniely_ff2004.readthedocs.io"
+Download = "https://pypi.org/project/mypackage_chendaniely_ff2004/#files"
 
 [project.optional-dependencies]
 dev = ["hatch", "pre-commit"]
@@ -54,7 +54,7 @@ dev = ["hatch", "pre-commit"]
 only-packages = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/mypackage"]
+packages = ["src/mypackage_chendaniely_ff2004"]
 
 # create hatch environment
 [tool.hatch.envs.test]
@@ -65,5 +65,20 @@ extra-dependencies = ["pytest", "pytest-cov"]
 python = ["3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.test.scripts]
-run_test_coverage = "pytest {args:--cov=mypackage --cov-report=term-missing}"
+run_test_coverage = "pytest {args:--cov=mypackage_chendaniely_ff2004 --cov-report=term-missing}"
 run_test = "pytest"
+
+
+# formatters
+[tool.hatch.envs.format]
+description = """Environment that runs code formatters"""
+extra-dependencies = ["black", "isort"]
+
+[tool.hatch.envs.format.scripts]
+format_code = ["isort .", "black ."]
+
+
+# dynamic verisoning
+# [tool.hatch]
+# version.source = "vcs"
+# build.hooks.vcs.version-file = "src/pyometa/_version.py"
